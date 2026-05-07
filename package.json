@@ -2,7 +2,7 @@
   "name": "aions-language-support",
   "displayName": "AIONS Language Support",
   "description": "Official language support and formatter for AIONS",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "icon": "aion.png",
   "publisher": "official-srv-modak",
   "engines": {
@@ -20,7 +20,7 @@
     "languages": [
       {
         "id": "aions",
-        "aliases": ["AIONS", "aions"],
+        "aliases": ["AIONS", "aions", "aion", "AION"],
         "extensions": [".aion"],
         "configuration": "./language-configuration.json"
       }
