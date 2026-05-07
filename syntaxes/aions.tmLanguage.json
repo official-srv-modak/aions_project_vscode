@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "AIONS",
+  "scopeName": "source.aions",
+  "patterns": [
+    {
+      "name": "string.quoted.double.aions",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.aions",
+          "match": "\\\\."
+        },
+        {
+          "name": "markup.underline.link.aions",
+          "match": "https?://[^\\s\"\\)\\]]+",
+          "comment": "Finds URLs inside strings and colors them as links"
+        }
+      ]
+    },
+    {
+      "name": "keyword.operator.assignment.aions",
+      "match": "-->"
+    },
+    {
+      "name": "support.type.property-name.aions",
+      "match": "\\b(name|function|description|link|args_schema)\\b"
+    },
+    {
+      "name": "variable.parameter.aions",
+      "match": "\\b(arg-[0-9]+|return-[0-9]+)\\b"
+    }
+  ],
+  "repository": {}
+}
