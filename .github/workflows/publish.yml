@@ -9,23 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # 1. Grab the code from the repository 
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Setup a fresh Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x' # Modern standard for VS Code extensions
+          node-version: '18.x'
 
-      # 3. Install your dependencies
       - name: Install Dependencies
-        run: npm install # Changed from 'npm ci' to bypass strict lockfile checks
+        run: npm install
 
-      # 4. Package and publish using the official VS Code CLI
       - name: Publish Extension
         env:
-          # This pulls your secret token securely from GitHub
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         run: npx @vscode/vsce publish -p $VSCE_PAT
