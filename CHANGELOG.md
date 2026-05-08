@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.8]
+
+- github pipeline integration.
+
 ## [1.0.6]
 
 - Changelog cleanup.
