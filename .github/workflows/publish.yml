@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # 1. Grab the code from the repository
+      # 1. Grab the code from the repository 
       - name: Checkout Code
         uses: actions/checkout@v4
 
