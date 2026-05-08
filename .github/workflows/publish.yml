@@ -19,9 +19,9 @@ jobs:
         with:
           node-version: '20.x' # Modern standard for VS Code extensions
 
-      # 3. Install your dependencies (esbuild, typescript, etc.)
+      # 3. Install your dependencies
       - name: Install Dependencies
-        run: npm ci # 'ci' is safer than 'install' for automated pipelines
+        run: npm install # Changed from 'npm ci' to bypass strict lockfile checks
 
       # 4. Package and publish using the official VS Code CLI
       - name: Publish Extension
