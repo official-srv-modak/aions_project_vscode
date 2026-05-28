@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.11]
+
+- Version increment and readme changes..
+
 ## [1.0.9]
 
 - Version increment.
