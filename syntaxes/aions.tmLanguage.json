@@ -4,6 +4,23 @@
   "scopeName": "source.aions",
   "patterns": [
     {
+      "name": "variable.parameter.aions",
+      "match": "\\bsystem_prompt\\b",
+      "comment": "Forces system_prompt to be Orange"
+    },
+    {
+      "name": "entity.name.function.aions",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "comment": "Hijacked to force multi-line strings to be Yellow/Gold",
+      "patterns": [
+        {
+          "name": "constant.character.escape.aions",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
       "name": "string.quoted.double.aions",
       "begin": "\"",
       "end": "\"",
@@ -13,9 +30,9 @@
           "match": "\\\\."
         },
         {
-          "name": "markup.underline.link.aions",
+          "name": "keyword.control.link.aions",
           "match": "https?://[^\\s\"\\)\\]]+",
-          "comment": "Finds URLs inside strings and colors them as links"
+          "comment": "Hijacked to force purple/magenta in standard dark themes"
         }
       ]
     },

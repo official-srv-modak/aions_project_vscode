@@ -1,8 +1,12 @@
 # Change Log
 
+## [1.0.12]
+
+- Introduction of schemas and system prompt.
+
 ## [1.0.11]
 
-- Version increment and readme changes..
+- Version increment and readme changes.
 
 ## [1.0.9]
 

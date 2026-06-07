@@ -8,12 +8,30 @@ export function activate(context: vscode.ExtensionContext) {
             const edits: vscode.TextEdit[] = [];
             let indentLevel = 0;
             const tabSize = 2; // 2 spaces per indentation level
+            let inMultiLineString = false;
 
             for (let i = 0; i < document.lineCount; i++) {
                 const line = document.lineAt(i);
                 let text = line.text.trim();
 
                 if (text.length === 0) continue;
+
+                // --- NEW: Multi-line String Protection ---
+                // Skip formatting for any text inside the """ system prompt block
+                if (inMultiLineString) {
+                    if (text.includes('"""')) {
+                        inMultiLineString = false; // We found the closing quotes
+                    } else {
+                        continue; // Skip formatting completely for lines purely inside the block
+                    }
+                } else {
+                    if (text.includes('"""')) {
+                        const quoteCount = (text.match(/"""/g) || []).length;
+                        if (quoteCount % 2 !== 0) {
+                            inMultiLineString = true; // We found the opening quotes
+                        }
+                    }
+                }
 
                 // 1. Decrease indent BEFORE calculating if the line starts with a closing bracket
                 if (text.startsWith('}') || text.startsWith(']')) {
@@ -29,7 +47,6 @@ export function activate(context: vscode.ExtensionContext) {
                 const indentedLine = ' '.repeat(indentLevel * tabSize) + text;
 
                 // 4. Increase indent AFTER calculating if the line ends with an opening bracket
-                // (This ensures the NEXT line is indented)
                 if (text.endsWith('{') || text.endsWith('[')) {
                     indentLevel++;
                 }
